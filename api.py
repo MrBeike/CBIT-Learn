@@ -226,7 +226,7 @@ class CBIT:
 
         Args:
             lessonDetail (dict): 获取到的课程信息
-            index (int): 课程内视频序号
+            index (int): 课程内视频序号.Defaults to 0.
 
         Returns:
             dict: 指定视频信息
@@ -244,6 +244,8 @@ class CBIT:
             "tcid": tc_id,
         }
         video_detail = self.s.post(video_page_url, data=data).json()
+        # 存储tc_id
+        video_detail["tc_id"] = tc_id
         return video_detail
 
     def learn(self, videoDetail: dict) -> dict:
@@ -259,6 +261,10 @@ class CBIT:
         totalTime = videoDetail["ALL_TIMES"]
         suspendTime = videoDetail["studyplan"]
         studyTime = totalTime
+        tc_id = videoDetail["tc_id"]
+        for item in videoDetail["items"]:
+            lessonId = item["leid"]
+            itemId = item["id"]
         # 学习视频
         video_url_url = f"https://learning.cbit.com.cn/www/lessonDetails/updateLessonProcessPC.do?lessonId={lessonId}&lessonItemId={itemId}&process=-2&tcid={tc_id}&totalTime={totalTime}&suspendTime={totalTime}&studytime={totalTime}"
         learn_result = self.s.post(video_url_url).json()
