@@ -141,7 +141,7 @@ class CBIT:
         get_cookie_url = "https://learning.cbit.com.cn/www/login/selectUserGroup.do"
         self.s.post(get_cookie_url)
         # 更新headers
-        param = {"name": res["name"], "groupName": res["groupName"]}
+        param = {"name": loginData["name"], "groupName": loginData["groupName"]}
         my_center_training_url = (
             "https://learning.cbit.com.cn/www/views/myCenter/training.html"
         )
