@@ -145,16 +145,18 @@ class CBIT:
         my_center_training_url = (
             "https://learning.cbit.com.cn/www/views/myCenter/training.html"
         )
+
         referer = f"{my_center_training_url}?{urlencode(param)}"
         self.s.headers["Referer"] = referer
         # 个人中心 class1
         # tc_mode 724：默认线上培训班  725：面授培训班[https://learning.cbit.com.cn/www/views/js/myCenter/mytraining.js]
-        self.s.headers[
-            "Content-Type"
-        ] = "application/x-www-form-urlencoded; charset=UTF-8"
+        self.s.headers["Content-Type"] = (
+            "application/x-www-form-urlencoded; charset=UTF-8"
+        )
         get_training_url = (
             "https://learning.cbit.com.cn/www/myTrainingClass/getMyTrainingClass.do"
         )
+
         data = {
             "tc_mode": "724",
             "pageIndex": "1",
@@ -181,6 +183,7 @@ class CBIT:
         training_detail_url = (
             "https://learning.cbit.com.cn/www/onlineTraining/trainingdetails.do"
         )
+
         params = {"id": tc_id}
         training_detail = self.s.get(training_detail_url, params=params).json()
         return training_detail
@@ -204,9 +207,9 @@ class CBIT:
         lessonId = select_training_lession["id"]
         le_name = select_training_lession["le_name"]
         print(lessonId, le_name)
-        self.s.headers[
-            "Referer"
-        ] = f"https://learning.cbit.com.cn/www/views/lesson/lessonDetailsStudeyed.html?tcid={tc_id}&lessonId={lessonId}"
+        self.s.headers["Referer"] = (
+            f"https://learning.cbit.com.cn/www/views/lesson/lessonDetailsStudeyed.html?tcid={tc_id}&lessonId={lessonId}"
+        )
         # 课程详情
         lession_detail_url = (
             "https://learning.cbit.com.cn/www//lessonDetails/details.do"
