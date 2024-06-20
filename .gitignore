@@ -2,3 +2,5 @@
 *.saz
 *.ipynb
 code.png
+*.pyc
+__pycache__

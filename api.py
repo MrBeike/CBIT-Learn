@@ -175,7 +175,7 @@ class CBIT:
             index (int, optional):指定培训班序号. Defaults to 0.
 
         Returns:
-            dict: 特定培训课程详细信息
+            dict: 特定培训课程组详细信息
         """
         # 获取tc_id training class?
         tc_id = trainingInfo["mytrainingclass"][index]["tc_id"]
@@ -193,7 +193,7 @@ class CBIT:
         获取指定课程的详细信息
 
         Args:
-            trainingDetail (dict): 获取到的指定培训信息
+            trainingDetail (dict): 获取到的指定培训课程组信息
             index (int, optional): 培训中的课程序号. Defaults to 0.
 
         Returns:
