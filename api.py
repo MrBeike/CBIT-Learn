@@ -90,7 +90,7 @@ class CBIT:
             str: 验证码识别结果
         """
         # 验证码识别（ddddocr)
-        ocr = ddddocr.DdddOcr()
+        ocr = ddddocr.DdddOcr(show_ad=False)
         if isinstance(code, str):
             with open(code, "rb") as f:
                 code = f.read()
